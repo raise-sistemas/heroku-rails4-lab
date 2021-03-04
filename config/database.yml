@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] || 'postgres://postgres:postgres@localhost:5432/herokuTestLog_development' %>
+  database: herokuTestLog_development
+
+test:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] || 'postgres://postgres:postgres@localhost:5432/herokuTestLog_test' %>
+  database: herokuTestLog_test
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
